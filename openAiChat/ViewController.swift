@@ -7,6 +7,7 @@
 
 import UIKit
 import ProgressHUD
+import Combine
 
 class ViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
@@ -16,6 +17,10 @@ class ViewController: UIViewController {
     private let aiViewModel = AIViewModel()
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    let input: PassthroughSubject<AIViewModel.Input, Never> = .init()
+    private var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBinding()
@@ -23,25 +28,43 @@ class ViewController: UIViewController {
     }
 
     private func setupBinding() {
-        aiViewModel.responseText.addAndNotify(observer: self) { response in
-            guard let response = response else {
-                return
-            }
-            DispatchQueue.main.async {[weak self] in
+        let output = aiViewModel.transform(input: input.eraseToAnyPublisher())
+        
+        output
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] event in
+            switch event {
+            case .didSucceeded(let response):
                 self?.view.endEditing(true)
                 self?.textField.text = ""
                 self?.answerLabel.attributedText = NSAttributedString(attributedString: response)
-            }
-        }
-        aiViewModel.isLoading.addAndNotify(observer: self) { isLoading in
-            guard let isLoading = isLoading else {
-                return
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.questionLabel.text = self?.textField.text ?? ""
+            case .didFailed(let error):
+                print(error)
+            case .isLoading(let isLoading):
                 isLoading ? self?.startLoading() : self?.stopLoading()
             }
-        }
+        }.store(in: &cancellables)
+        
+        
+//        aiViewModel.responseText.addAndNotify(observer: self) { response in
+//            guard let response = response else {
+//                return
+//            }
+//            DispatchQueue.main.async {[weak self] in
+//                self?.view.endEditing(true)
+//                self?.textField.text = ""
+//                self?.answerLabel.attributedText = NSAttributedString(attributedString: response)
+//            }
+//        }
+//        aiViewModel.isLoading.addAndNotify(observer: self) { isLoading in
+//            guard let isLoading = isLoading else {
+//                return
+//            }
+//            DispatchQueue.main.async { [weak self] in
+//                self?.questionLabel.text = self?.textField.text ?? ""
+//                isLoading ? self?.startLoading() : self?.stopLoading()
+//            }
+//        }
     }
     
     private func addNotification() {
@@ -60,7 +83,9 @@ class ViewController: UIViewController {
     
     @IBAction func aiButtonClicked(_ sender: Any) {
         guard let text = textField.text, !text.isEmpty else { return }
-        aiViewModel.getResponse(input: text)
+//        aiViewModel.getResponse(input: text)
+        input.send(.sendRequest(input: text))
+        
     }
     @IBAction func clearQuestionButtonClicked(_ sender: Any) {
         questionLabel.text = nil

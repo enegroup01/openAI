@@ -14,8 +14,8 @@
             filePath = "openAiChat/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "setupBinding()"
             landmarkType = "7">
          </BreakpointContent>
@@ -63,6 +63,86 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32F9C2E8-DAB2-474D-A382-4B50F5F296A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "openAiChat/Service/APICaller.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "fetchResponse(input:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B8C83D2-6524-4CE9-9930-5025E72BE510"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "openAiChat/Service/APICaller.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "fetchResponse(input:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C12E150B-C388-4516-AEC1-2BB27011507B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "openAiChat/Service/APICaller.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "fetchResponse(input:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C12E150B-C388-4516-AEC1-2BB27011507B - 1ba32bbff3ff1f99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; () in openAiChat.APICaller.fetchResponse(input: Swift.String) -&gt; Combine.Future&lt;Swift.String, Swift.Error&gt;"
+                  moduleName = "openAiChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ethan/Documents/repo/openAiChat/openAiChat/Service/APICaller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "C12E150B-C388-4516-AEC1-2BB27011507B - bc4b3e0f3801c85b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;OpenAISwift.OpenAI, OpenAISwift.OpenAIError&gt;) -&gt; () in closure #1 ((Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; () in openAiChat.APICaller.fetchResponse(input: Swift.String) -&gt; Combine.Future&lt;Swift.String, Swift.Error&gt;"
+                  moduleName = "openAiChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ethan/Documents/repo/openAiChat/openAiChat/Service/APICaller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
                   offsetFromSymbolStart = "80">
                </Location>
             </Locations>

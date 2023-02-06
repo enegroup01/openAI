@@ -28,17 +28,25 @@ class Conversation {
         }
     }
     
-    var prompts: LiveData<NSMutableAttributedString> = .init(NSMutableAttributedString(string: ""))
+    var prompt = NSMutableAttributedString(string: "")
+//    var prompts: LiveData<NSMutableAttributedString> = .init(NSMutableAttributedString(string: ""))
     let attributedSpacing = NSAttributedString(string:"\n")
     
-    func addToPrompt(text: String, type: CompletionType) {
-        guard let content = prompts.value else { return }
+    func updatePrompt(text: String, type: CompletionType) {
         let stringToAppend = NSAttributedString(string: text, attributes: [.foregroundColor: type.fontColor, .font: type.font])
-        content.append(attributedSpacing)
-        content.append(stringToAppend)
-        content.append(attributedSpacing)
-        prompts.just(content)
+        prompt.append(attributedSpacing)
+        prompt.append(stringToAppend)
+        prompt.append(attributedSpacing)
     }
+    
+//    func addToPrompt(text: String, type: CompletionType) {
+//        guard let content = prompts.value else { return }
+//        let stringToAppend = NSAttributedString(string: text, attributes: [.foregroundColor: type.fontColor, .font: type.font])
+//        content.append(attributedSpacing)
+//        content.append(stringToAppend)
+//        content.append(attributedSpacing)
+//        prompts.just(content)
+//    }
 }
 
 /*
