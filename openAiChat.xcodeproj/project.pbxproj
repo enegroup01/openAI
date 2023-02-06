@@ -13,6 +13,12 @@
 		AA2900EA298909F2004C71E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2900E8298909F2004C71E1 /* Main.storyboard */; };
 		AA2900EC298909F6004C71E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA2900EB298909F6004C71E1 /* Assets.xcassets */; };
 		AA2900EF298909F6004C71E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2900ED298909F6004C71E1 /* LaunchScreen.storyboard */; };
+		AA2900F829890A04004C71E1 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA2900F729890A04004C71E1 /* OpenAISwift */; };
+		AA2900FA29890A13004C71E1 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2900F929890A13004C71E1 /* APICaller.swift */; };
+		AA2900FC29890D0C004C71E1 /* AIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2900FB29890D0C004C71E1 /* AIViewModel.swift */; };
+		AA2900FE29890D28004C71E1 /* LiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2900FD29890D28004C71E1 /* LiveData.swift */; };
+		AA29010129896828004C71E1 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = AA29010029896828004C71E1 /* ProgressHUD */; };
+		AAE04864298F81B200BC5648 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE04863298F81B200BC5648 /* Conversation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,10 @@
 		AA2900EB298909F6004C71E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA2900EE298909F6004C71E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA2900F0298909F6004C71E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA2900F929890A13004C71E1 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		AA2900FB29890D0C004C71E1 /* AIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIViewModel.swift; sourceTree = "<group>"; };
+		AA2900FD29890D28004C71E1 /* LiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveData.swift; sourceTree = "<group>"; };
+		AAE04863298F81B200BC5648 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +41,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA2900F829890A04004C71E1 /* OpenAISwift in Frameworks */,
+				AA29010129896828004C71E1 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA23018C299124B6005362DA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AA2900FD29890D28004C71E1 /* LiveData.swift */,
+				AA2900F929890A13004C71E1 /* APICaller.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		AA2900D6298909F2004C71E1 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +77,12 @@
 		AA2900E1298909F2004C71E1 /* openAiChat */ = {
 			isa = PBXGroup;
 			children = (
+				AA23018C299124B6005362DA /* Service */,
 				AA2900E2298909F2004C71E1 /* AppDelegate.swift */,
 				AA2900E4298909F2004C71E1 /* SceneDelegate.swift */,
 				AA2900E6298909F2004C71E1 /* ViewController.swift */,
+				AAE04863298F81B200BC5648 /* Conversation.swift */,
+				AA2900FB29890D0C004C71E1 /* AIViewModel.swift */,
 				AA2900E8298909F2004C71E1 /* Main.storyboard */,
 				AA2900EB298909F6004C71E1 /* Assets.xcassets */,
 				AA2900ED298909F6004C71E1 /* LaunchScreen.storyboard */,
@@ -83,6 +107,10 @@
 			dependencies = (
 			);
 			name = openAiChat;
+			packageProductDependencies = (
+				AA2900F729890A04004C71E1 /* OpenAISwift */,
+				AA29010029896828004C71E1 /* ProgressHUD */,
+			);
 			productName = openAiChat;
 			productReference = AA2900DF298909F2004C71E1 /* openAiChat.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +139,10 @@
 				Base,
 			);
 			mainGroup = AA2900D6298909F2004C71E1;
+			packageReferences = (
+				AA2900F629890A04004C71E1 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				AA2900FF29896828004C71E1 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+			);
 			productRefGroup = AA2900E0298909F2004C71E1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +173,10 @@
 				AA2900E7298909F2004C71E1 /* ViewController.swift in Sources */,
 				AA2900E3298909F2004C71E1 /* AppDelegate.swift in Sources */,
 				AA2900E5298909F2004C71E1 /* SceneDelegate.swift in Sources */,
+				AA2900FC29890D0C004C71E1 /* AIViewModel.swift in Sources */,
+				AAE04864298F81B200BC5648 /* Conversation.swift in Sources */,
+				AA2900FA29890A13004C71E1 /* APICaller.swift in Sources */,
+				AA2900FE29890D28004C71E1 /* LiveData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +394,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA2900F629890A04004C71E1 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AA2900FF29896828004C71E1 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA2900F729890A04004C71E1 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA2900F629890A04004C71E1 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
+		AA29010029896828004C71E1 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA2900FF29896828004C71E1 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA2900D7298909F2004C71E1 /* Project object */;
 }
