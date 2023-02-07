@@ -36,35 +36,15 @@ class ViewController: UIViewController {
             switch event {
             case .didSucceeded(let response):
                 self?.view.endEditing(true)
-                self?.textField.text = ""
+                self?.textField.text = nil
                 self?.answerLabel.attributedText = NSAttributedString(attributedString: response)
             case .didFailed(let error):
                 print(error)
             case .isLoading(let isLoading):
+                self?.questionLabel.text = self?.textField.text ?? ""
                 isLoading ? self?.startLoading() : self?.stopLoading()
             }
         }.store(in: &cancellables)
-        
-        
-//        aiViewModel.responseText.addAndNotify(observer: self) { response in
-//            guard let response = response else {
-//                return
-//            }
-//            DispatchQueue.main.async {[weak self] in
-//                self?.view.endEditing(true)
-//                self?.textField.text = ""
-//                self?.answerLabel.attributedText = NSAttributedString(attributedString: response)
-//            }
-//        }
-//        aiViewModel.isLoading.addAndNotify(observer: self) { isLoading in
-//            guard let isLoading = isLoading else {
-//                return
-//            }
-//            DispatchQueue.main.async { [weak self] in
-//                self?.questionLabel.text = self?.textField.text ?? ""
-//                isLoading ? self?.startLoading() : self?.stopLoading()
-//            }
-//        }
     }
     
     private func addNotification() {
@@ -83,7 +63,6 @@ class ViewController: UIViewController {
     
     @IBAction func aiButtonClicked(_ sender: Any) {
         guard let text = textField.text, !text.isEmpty else { return }
-//        aiViewModel.getResponse(input: text)
         input.send(.sendRequest(input: text))
         
     }
@@ -106,8 +85,9 @@ extension ViewController {
     }
 
     func stopLoading() {
-        self.view.isUserInteractionEnabled = true
         ProgressHUD.dismiss()
+        self.view.isUserInteractionEnabled = true
+        
     }
 }
 

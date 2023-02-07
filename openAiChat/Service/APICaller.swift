@@ -16,13 +16,9 @@ final class APICaller {
     private init() {}
     
     private var client: OpenAISwift?
-    
-    @frozen enum Constants {
-        static let apiKey = "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"
-    }
-    
-    public func setupClient() {
-        client = OpenAISwift(authToken: Constants.apiKey)
+            
+    public func setupClient(apiKey: String) {
+        client = OpenAISwift(authToken: apiKey)
     }
     
     public func fetchResponse(input: String) -> Future<String, Error> {

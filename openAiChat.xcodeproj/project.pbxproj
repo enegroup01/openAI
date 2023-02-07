@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA23019829921E01005362DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA23019729921E01005362DA /* GoogleService-Info.plist */; };
+		AA23019B29922300005362DA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AA23019A29922300005362DA /* FirebaseAnalytics */; };
+		AA23019D29922300005362DA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AA23019C29922300005362DA /* FirebaseDatabase */; };
 		AA2900E3298909F2004C71E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2900E2298909F2004C71E1 /* AppDelegate.swift */; };
 		AA2900E5298909F2004C71E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2900E4298909F2004C71E1 /* SceneDelegate.swift */; };
 		AA2900E7298909F2004C71E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2900E6298909F2004C71E1 /* ViewController.swift */; };
@@ -22,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA23019729921E01005362DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA2900DF298909F2004C71E1 /* openAiChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openAiChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2900E2298909F2004C71E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA2900E4298909F2004C71E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 			files = (
 				AA2900F829890A04004C71E1 /* OpenAISwift in Frameworks */,
 				AA29010129896828004C71E1 /* ProgressHUD in Frameworks */,
+				AA23019D29922300005362DA /* FirebaseDatabase in Frameworks */,
+				AA23019B29922300005362DA /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,7 @@
 				AA2900E6298909F2004C71E1 /* ViewController.swift */,
 				AAE04863298F81B200BC5648 /* Conversation.swift */,
 				AA2900FB29890D0C004C71E1 /* AIViewModel.swift */,
+				AA23019729921E01005362DA /* GoogleService-Info.plist */,
 				AA2900E8298909F2004C71E1 /* Main.storyboard */,
 				AA2900EB298909F6004C71E1 /* Assets.xcassets */,
 				AA2900ED298909F6004C71E1 /* LaunchScreen.storyboard */,
@@ -110,6 +117,8 @@
 			packageProductDependencies = (
 				AA2900F729890A04004C71E1 /* OpenAISwift */,
 				AA29010029896828004C71E1 /* ProgressHUD */,
+				AA23019A29922300005362DA /* FirebaseAnalytics */,
+				AA23019C29922300005362DA /* FirebaseDatabase */,
 			);
 			productName = openAiChat;
 			productReference = AA2900DF298909F2004C71E1 /* openAiChat.app */;
@@ -142,6 +151,7 @@
 			packageReferences = (
 				AA2900F629890A04004C71E1 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				AA2900FF29896828004C71E1 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				AA23019929922300005362DA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = AA2900E0298909F2004C71E1 /* Products */;
 			projectDirPath = "";
@@ -157,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA23019829921E01005362DA /* GoogleService-Info.plist in Resources */,
 				AA2900EF298909F6004C71E1 /* LaunchScreen.storyboard in Resources */,
 				AA2900EC298909F6004C71E1 /* Assets.xcassets in Resources */,
 				AA2900EA298909F2004C71E1 /* Main.storyboard in Resources */,
@@ -396,6 +407,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AA23019929922300005362DA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		AA2900F629890A04004C71E1 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
@@ -415,6 +434,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA23019A29922300005362DA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA23019929922300005362DA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		AA23019C29922300005362DA /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA23019929922300005362DA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
 		AA2900F729890A04004C71E1 /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA2900F629890A04004C71E1 /* XCRemoteSwiftPackageReference "OpenAISwift" */;

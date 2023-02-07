@@ -6,17 +6,49 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseDatabase
+import Combine
+
+
+struct ApiKey: Codable {
+    var apiKey: String
+}
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
+    private let input: PassthroughSubject<AIViewModel.Input, Never> = .init()
+    
+    private lazy var databasePath: DatabaseReference? = {
+        let ref = Database.database().reference()
+        return ref
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        APICaller.shared.setupClient()
+        FirebaseApp.configure()
+        handleOpenAIClient()
         return true
     }
+    
+    func handleOpenAIClient() {
+        input.send(.connectedToServer(false))
+        let decoder = JSONDecoder()
+        guard let databasePath = databasePath else { return }
+        databasePath.observe(.value) { [weak self] snapshot,_  in
+            guard let json = snapshot.value as? [String: String] else { return }
+            do {
+                let apiData = try JSONSerialization.data(withJSONObject: json)
+                let decodedData = try decoder.decode(ApiKey.self, from: apiData)
+                APICaller.shared.setupClient(apiKey: decodedData.apiKey)
+                self?.input.send((.connectedToServer(true)))
+            } catch {
+                print("an error occurred", error)
+            }
+        }
+    }
+    
 
     // MARK: UISceneSession Lifecycle
 
