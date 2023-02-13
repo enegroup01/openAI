@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleOpenAIClient() {
-        input.send(.connectedToServer(false))
+        input.send(.startToConnect(true))
         let decoder = JSONDecoder()
         guard let databasePath = databasePath else { return }
         databasePath.observe(.value) { [weak self] snapshot,_  in
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let apiData = try JSONSerialization.data(withJSONObject: json)
                 let decodedData = try decoder.decode(ApiKey.self, from: apiData)
                 APICaller.shared.setupClient(apiKey: decodedData.apiKey)
-                self?.input.send((.connectedToServer(true)))
+                self?.input.send((.startToConnect(false)))
             } catch {
                 print("an error occurred", error)
             }

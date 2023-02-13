@@ -10,7 +10,7 @@ import Combine
 
 final class AIViewModel {
     enum Input {
-        case connectedToServer(_ bool: Bool)
+        case startToConnect(_ bool: Bool)
         case sendRequest(input: String)
     }
     
@@ -34,6 +34,7 @@ final class AIViewModel {
                 self.conversation.updatePrompt(text: inputText, type: .question)
                 APICaller.shared.fetchResponse(input: self.conversation.prompt.string).sink { [weak self] completion in
                     if case .failure(let error) = completion {
+                        self?.output.send(.isLoading(false))
                         self?.output.send(.didFailed(error: error.localizedDescription))
                     }
                 } receiveValue: { [weak self] response in
@@ -41,8 +42,8 @@ final class AIViewModel {
                     self?.conversation.updatePrompt(text: response, type: .answer)
                     self?.output.send(.didSucceeded(response: self?.conversation.prompt ?? NSAttributedString(string:"")))
                 }.store(in: &self.cancellables)
-            case .connectedToServer(let connected):
-                connected ? self.output.send(.isLoading(false)) : self.output.send(.isLoading(true))
+            case .startToConnect(let connecting):
+                connecting ? self.output.send(.isLoading(true)) : self.output.send(.isLoading(false))
             }
         }.store(in: &cancellables)
         return output.eraseToAnyPublisher()
